@@ -30,7 +30,7 @@ import { Input } from '@/components/ui/input'
 </style>
 
 
-export default function page() {
+export default function Page() {
   const ref = React.useRef<MDXEditorMethods>(null)
 
   const { markdown, setMarkdown } = useMarkdown();

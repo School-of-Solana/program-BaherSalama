@@ -17,12 +17,12 @@ export function useSoulsendCloseMutation({ account, soulsend }: { account: UiWal
       const addressEncoder = getAddressEncoder();
       console.log(soulsend.data.content)
       const hash = CryptoJS.SHA256(soulsend.data.content.toString()).toString();
-      let buffer = Buffer.from(hash.toString(CryptoJS.enc.Hex), 'hex');
-      let array = new Uint8Array(buffer);
+      const buffer = Buffer.from(hash.toString(), 'hex');
+      const array = new Uint8Array(buffer);
       const [soul, bump] = await getProgramDerivedAddress({
         programAddress: '7gLZpemQseJZJWo5tcSWVCL4g1Y6GN1xmdiptkQUo2rZ' as Address,
         seeds: [
-          addressEncoder.encode(account.address),
+          addressEncoder.encode(account.address as Address),
           array
         ]
       });

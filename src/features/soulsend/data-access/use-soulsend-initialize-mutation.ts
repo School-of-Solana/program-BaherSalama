@@ -22,15 +22,15 @@ export function useSoulsendInitializeMutation({ account }: { account: UiWalletAc
   const { markdown, setMarkdown } = useMarkdown();
   const { heading, setHeading } = useHeading();
   const hash = CryptoJS.SHA256(markdown).toString();
-  let buffer = Buffer.from(hash.toString(CryptoJS.enc.Hex), 'hex');
-  let array = new Uint8Array(buffer);
+  const buffer = Buffer.from(hash.toString(), 'hex');
+  const array = new Uint8Array(buffer);
   return useMutation({
     mutationFn: async () => {
       const addressEncoder = getAddressEncoder();
       const [soul, bump] = await getProgramDerivedAddress({
         programAddress: '7gLZpemQseJZJWo5tcSWVCL4g1Y6GN1xmdiptkQUo2rZ' as Address,
         seeds: [
-          addressEncoder.encode(signer.address),
+          addressEncoder.encode(account.address as Address),
           array
         ]
       });
