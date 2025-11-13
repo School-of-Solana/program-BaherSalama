@@ -50,7 +50,6 @@ export function AppHeader({ links = [] }: { links: { label: string; path: string
         <div className="hidden md:flex items-center gap-4">
           <WalletDropdown />
           <ClusterDropdown />
-          <ThemeSelect />
         </div>
 
         {showMenu && (
@@ -59,7 +58,6 @@ export function AppHeader({ links = [] }: { links: { label: string; path: string
               <div className="flex justify-end items-center gap-4">
                 <WalletDropdown />
                 <ClusterDropdown />
-                <ThemeSelect />
               </div>
               <ul className="flex flex-col gap-4">
                 {links.map(({ label, path }) => (

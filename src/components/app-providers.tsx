@@ -12,7 +12,7 @@ export function AppProviders({ children }: Readonly<{ children: React.ReactNode 
     <MarkdownProvider>
       <HeadingProvider>
         <ReactQueryProvider>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <ThemeProvider attribute="class" defaultTheme="light" disableTransitionOnChange>
             <SolanaProvider>
               {children}
             </SolanaProvider>

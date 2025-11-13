@@ -44,7 +44,7 @@ function WalletDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="cursor-pointer" style={{ "display": "flex" }}>
+        <Button variant="outline" className="cursor-pointer" style={{ "display": "flex",margin:"auto" }}>
           {wallet?.icon ? <WalletAvatar wallet={wallet} /> : null}
           {connected ? (account ? ellipsify(account.address) : wallet?.name) : 'Select Wallet'}
         </Button>
