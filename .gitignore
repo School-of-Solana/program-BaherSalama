@@ -1,0 +1,5 @@
+.next
+anchor/.anchor
+anchor/node_modules
+anchor/target
+node_modules

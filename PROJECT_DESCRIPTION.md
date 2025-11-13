@@ -1,79 +1,74 @@
 # Project Description
 
-**Deployed Frontend URL:** [TODO: Link to your deployed frontend]
+**Deployed Frontend URL:** []
 
-**Solana Program ID:** [TODO: Your deployed program's public key]
+**Solana Program ID:** 7gLZpemQseJZJWo5tcSWVCL4g1Y6GN1xmdiptkQUo2rZ
 
 ## Project Overview
 
 ### Description
-[TODO: Provide a comprehensive description of your dApp. Explain what it does. Be detailed about the core functionality.]
+A Blog with markdown where the users are auumss and its up for the user to verify there claims on there own
 
 ### Key Features
-[TODO: List the main features of your dApp. Be specific about what users can do.]
-
-- Feature 1: [Description]
-- Feature 2: [Description]
-- ...
+- Feature 1: Markdown Editor for blogs
+- Feature 2: The owner of the blog is unknown
   
 ### How to Use the dApp
-[TODO: Provide step-by-step instructions for users to interact with your dApp]
-
-1. **Connect Wallet**
-2. **Main Action 1:** [Step-by-step instructions]
-3. **Main Action 2:** [Step-by-step instructions]
-4. ...
+1. **Connect Wallet in devnet**
+2. **Main Action 1:** Go to the /write page start writing your blog and its title
+3. **Main Action 2:** Post the blog in the /soulsend page
+4. **look at other people blogs**
 
 ## Program Architecture
-[TODO: Describe your Solana program's architecture. Explain the main instructions, account structures, and data flow.]
+3 accounts 1 for PDA for blog and one for add and one for deleting
 
 ### PDA Usage
-[TODO: Explain how you implemented Program Derived Addresses (PDAs) in your project. What seeds do you use and why?]
+blogs are PDA and the seed is the hash of the content with the id of the writer so that each blog is uniq
 
 **PDAs Used:**
-- PDA 1: [Purpose and description]
-- PDA 2: [Purpose and description]
+- PDA 1: allowing more than one blog
 
 ### Program Instructions
-[TODO: List and describe all the instructions in your Solana program]
+1. add/init blog (soulsend)
+2. Delete blog
 
 **Instructions Implemented:**
-- Instruction 1: [Description of what it does]
-- Instruction 2: [Description of what it does]
-- ...
+- Instruction 1: adds a blog
+- Instruction 2: delets a blog
 
 ### Account Structure
-[TODO: Describe your main account structures and their purposes]
+TODO: Describe your main account structures and their purposes
 
 ```rust
 // Example account structure (replace with your actual structs)
 #[account]
-pub struct YourAccountName {
-    // Describe each field
+pub struct Soulsend{
+    pub owner: Pubkey,// to know the owner
+    pub bump: u8,// to know the PDA bump
+    #[max_len(HEADING_LENGTH)]
+    pub heading: String, // title of the blog
+    #[max_len(SOUL_LENGTH)]
+    pub content: String,// markdown content
 }
 ```
 
 ## Testing
 
 ### Test Coverage
-[TODO: Describe your testing approach and what scenarios you covered]
-
 **Happy Path Tests:**
-- Test 1: [Description]
-- Test 2: [Description]
-- ...
+- Test 1: adding a blog gets added
+- Test 2: deleteing a blog gets deleted
 
 **Unhappy Path Tests:**
-- Test 1: [Description of error scenario]
-- Test 2: [Description of error scenario]
-- ...
+- Test 1: adding a blog with a bigger than 100bytes should fail
 
 ### Running Tests
 ```bash
 # Commands to run your tests
-anchor test
+pnpm run anchor-test
 ```
 
 ### Additional Notes for Evaluators
 
-[TODO: Add any specific notes or context that would help evaluators understand your project better]
++ project should be a place for people to write there blogs in markdown freely
++ project title should be good to get people attention
