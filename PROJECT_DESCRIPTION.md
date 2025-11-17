@@ -60,7 +60,7 @@ pub struct Soulsend{
 - Test 2: deleteing a blog gets deleted
 
 **Unhappy Path Tests:**
-- Test 1: adding a blog with a bigger than 100bytes should fail
+- Test 1: adding a blog title with a bigger than 100bytes should fail
 
 ### Running Tests
 ```bash
@@ -72,3 +72,4 @@ pnpm run anchor-test
 
 + project should be a place for people to write there blogs in markdown freely
 + project title should be good to get people attention
++ make sure to use devnet in the dropdown in the app
